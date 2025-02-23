@@ -1,6 +1,8 @@
 """
+Author - Prashant Gupta
+
 PDF management tool: 
-This mini project is developed using Python by Prashant and his team. 
+This mini project is developed using Python.
 It is designed to assist users with various actions on PDF files, 
 such as converting them to different formats, extracting images, and performing other useful operations. 
 This tool offers practical solutions for PDF management, making it easier for users 
