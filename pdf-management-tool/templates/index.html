@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Management Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">PDF Management Tool</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Choose a Service</h2>
+        <select id="serviceSelect" class="form-select mt-3" onchange="showForm()">
+            <option value="">Select a Service</option>
+            <option value="pdfToDocx">Convert PDF to DOCX</option>
+            <option value="docxToPdf">Convert DOCX to PDF</option>
+            <option value="extractImages">Extract Images from PDF</option>
+            <option value="mergePdfs">Merge PDFs</option>
+            <option value="splitPdf">Split PDF</option>
+            <option value="encryptPdf">Encrypt a PDF</option>
+        </select>
+
+        <div id="serviceForms" class="mt-4">
+            <form id="pdfToDocxForm" style="display: none;" action="/convert-pdf-to-docx" method="post" enctype="multipart/form-data">
+                <label class="form-label">Upload a PDF</label>
+                <input class="form-control" type="file" name="file" required>
+                <button type="submit" class="btn btn-primary mt-3">Convert</button>
+            </form>
+
+            <form id="docxToPdfForm" style="display: none;" action="/convert-docx-to-pdf" method="post" enctype="multipart/form-data">
+                <label class="form-label">Upload a DOCX</label>
+                <input class="form-control" type="file" name="file" required>
+                <button type="submit" class="btn btn-primary mt-3">Convert</button>
+            </form>
+
+            <form id="extractImagesForm" style="display: none;" action="/extract-images" method="post" enctype="multipart/form-data">
+                <label class="form-label">Upload a PDF</label>
+                <input class="form-control" type="file" name="file" required>
+                <button type="submit" class="btn btn-primary mt-3">Extract</button>
+            </form>
+
+            <form id="mergePdfsForm" style="display: none;" action="/merge-pdfs" method="post" enctype="multipart/form-data">
+                <label class="form-label">Upload PDFs</label>
+                <input class="form-control" type="file" name="files" multiple required>
+                <button type="submit" class="btn btn-primary mt-3">Merge</button>
+            </form>
+
+            <form id="splitPdfForm" style="display: none;" action="/split-pdf" method="post" enctype="multipart/form-data">
+                <label class="form-label">Upload a PDF</label>
+                <input class="form-control" type="file" name="file" required>
+                <button type="submit" class="btn btn-primary mt-3">Split</button>
+            </form>
+
+            <form id="encryptPdfForm" style="display: none;" action="/encrypt-pdf" method="post" enctype="multipart/form-data">
+                <label class="form-label">Upload a PDF</label>
+                <input class="form-control" type="file" name="file" required>
+                <label class="form-label mt-2">Enter Password</label>
+                <input class="form-control" type="password" name="password" required>
+                <button type="submit" class="btn btn-primary mt-3">Encrypt</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showForm() {
+            let selectedService = document.getElementById("serviceSelect").value;
+            document.querySelectorAll("form").forEach(form => form.style.display = "none");
+            if (selectedService) {
+                document.getElementById(selectedService + "Form").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
