@@ -57,7 +57,7 @@ Follow these steps to set up and run the web application:
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/yourusername/pdf-management-tool.git
+git clone https://github.com/prashant-g0/pdf-management-tool-python.git
 cd pdf-management-tool
 ```
 
